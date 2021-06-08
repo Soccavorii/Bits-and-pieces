@@ -1,0 +1,12 @@
+#ifdef _WINDOWS
+#ifndef UNICODE
+#define UNICODE
+#endif
+#ifndef _UNICODE
+#define _UNICODE
+#endif
+#include <codecvt>
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> wstringConverter;
+#define widen(s)  wstringConverter.from_bytes(s)
+#define narrow(s) wstringConverter.to_bytes(s)
+#endif
